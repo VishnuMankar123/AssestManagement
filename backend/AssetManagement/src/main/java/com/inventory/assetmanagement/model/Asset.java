@@ -1,15 +1,19 @@
 package com.inventory.assetmanagement.model;
 
-import com.inventory.assetmanagement.enumeration.AssetType;
 import com.inventory.assetmanagement.enumeration.Status;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,7 +24,9 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "asset")
 public class Asset {
     @Id
@@ -28,7 +34,7 @@ public class Asset {
     private Long id;
 
     @Column(name = "employee_name")
-    private String name;
+    private String employeeName;
 
     @Column(name = "employee_id")
     private String employeeId;
@@ -39,27 +45,31 @@ public class Asset {
     @Column(name = "is_asset_allocated")
     private Boolean isAssetAllocated;
 
-    @Column(name = "asset_type")
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "asset_type_id", referencedColumnName = "id")
     private AssetType assetType;
 
     @Column(name = "assign_date")
     @Temporal(value = TemporalType.DATE)
     private Date assignDate;
 
-    @Column(name = "manufacturer")
-    private String manufacturer;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "manufacturer_id", referencedColumnName = "id")
+    private Manufacturer manufacturer;
 
-    @Column(name = "serial_number")
+    @Column(name = "serial_number", unique = true)
     private String serialNumber;
 
     @Column(name = "model")
     private String model;
 
-    @Column(name = "operating_system")
-    private String operatingSystem;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "operating_system_id", referencedColumnName = "id")
+    private OperatingSystem operatingSystem;
 
-    @Column(name = "location")
-    private String location;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    private Location location;
 
     @Column(name = "processor")
     private String processor;
