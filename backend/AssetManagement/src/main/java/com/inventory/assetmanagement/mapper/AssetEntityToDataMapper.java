@@ -7,8 +7,8 @@ import com.inventory.assetmanagement.model.Location;
 import com.inventory.assetmanagement.model.Manufacturer;
 import com.inventory.assetmanagement.model.OperatingSystem;
 
-public class AssetEntityToAssetDataMapper {
-    private AssetEntityToAssetDataMapper() {}
+public class AssetEntityToDataMapper {
+    private AssetEntityToDataMapper() {}
 
     public static Asset dataToEntity(AssetData assetData) {
         return Asset.builder()
