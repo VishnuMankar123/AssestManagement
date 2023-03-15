@@ -31,7 +31,7 @@ public class LocationService {
     }
 
     @Transactional
-    public void editLocation(Long id, String newLocation) {
+    public void editLocationById(Long id, String newLocation) {
         Location fetchedLocation = locationRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(EntityConstants.LOCATION));
         fetchedLocation.setLocationName(newLocation);
