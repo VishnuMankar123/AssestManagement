@@ -21,7 +21,7 @@ public class OperatingSystemService {
 
     public String fetchOperatingSystemById(Long id) {
         OperatingSystem fetchedOperatingSystem = operatingSystemRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(EntityConstants.OPERATING_SYSTEM));
+                .orElseThrow(() -> new ResourceNotFoundException(EntityConstants.OPERATING_SYSTEM, id));
         return fetchedOperatingSystem.getOperatingSystemName();
     }
 
@@ -33,18 +33,14 @@ public class OperatingSystemService {
     @Transactional
     public void editOperatingSystem(Long id, String newName) {
         OperatingSystem fetchedOperatingSystem = operatingSystemRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(EntityConstants.OPERATING_SYSTEM));
+                .orElseThrow(() -> new ResourceNotFoundException(EntityConstants.OPERATING_SYSTEM, id));
         fetchedOperatingSystem.setOperatingSystemName(newName);
     }
 
     public void deleteOperatingSystem(Long id) {
         if (!operatingSystemRepository.existsById(id)) {
-            throw new ResourceNotFoundException(EntityConstants.OPERATING_SYSTEM);
+            throw new ResourceNotFoundException(EntityConstants.OPERATING_SYSTEM, id);
         }
         operatingSystemRepository.deleteById(id);
-    }
-
-    public boolean existsByName(String name) {
-        return operatingSystemRepository.existsByOperatingSystemName(name);
     }
 }

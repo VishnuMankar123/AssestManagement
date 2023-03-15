@@ -25,24 +25,20 @@ public class AssetTypeService {
     }
 
     public String getAssetTypeById(Long id) {
-        AssetType assetType = assetTypeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(EntityConstants.ASSET_TYPE));
+        AssetType assetType = assetTypeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(EntityConstants.ASSET_TYPE, id));
         return assetType.getType();
     }
 
     @Transactional
     public void editAssetTypeById(Long id, String newType) {
-        AssetType assetType = assetTypeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(EntityConstants.ASSET_TYPE));
+        AssetType assetType = assetTypeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(EntityConstants.ASSET_TYPE, id));
         assetType.setType(newType);
     }
 
     public void deleteAssetTypeById(Long id) {
         if (!assetTypeRepository.existsById(id)) {
-            throw new ResourceNotFoundException(EntityConstants.ASSET_TYPE);
+            throw new ResourceNotFoundException(EntityConstants.ASSET_TYPE, id);
         }
         assetTypeRepository.deleteById(id);
-    }
-
-    public boolean existByAssetType(String assetType) {
-        return assetTypeRepository.existsByType(assetType);
     }
 }

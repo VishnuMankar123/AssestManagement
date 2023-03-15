@@ -21,7 +21,7 @@ public class LocationService {
 
     public String fetchLocationById(Long id) {
         Location fetchedLocation = locationRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(EntityConstants.LOCATION));
+                .orElseThrow(() -> new ResourceNotFoundException(EntityConstants.LOCATION, id));
         return fetchedLocation.getLocationName();
     }
 
@@ -33,18 +33,14 @@ public class LocationService {
     @Transactional
     public void editLocationById(Long id, String newLocation) {
         Location fetchedLocation = locationRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(EntityConstants.LOCATION));
+                .orElseThrow(() -> new ResourceNotFoundException(EntityConstants.LOCATION, id));
         fetchedLocation.setLocationName(newLocation);
     }
 
     public void deleteLocationById(Long id) {
         if (!locationRepository.existsById(id)) {
-            throw new ResourceNotFoundException(EntityConstants.LOCATION);
+            throw new ResourceNotFoundException(EntityConstants.LOCATION, id);
         }
         locationRepository.deleteById(id);
-    }
-
-    public boolean existsByLocationName(String locationName) {
-        return locationRepository.existsByLocationName(locationName);
     }
 }

@@ -21,7 +21,7 @@ public class ManufacturerService {
 
     public String fetchManufacturerById(Long id) {
         Manufacturer manufacturer = manufacturerRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(EntityConstants.MANUFACTURER));
+                .orElseThrow(() -> new ResourceNotFoundException(EntityConstants.MANUFACTURER, id));
         return manufacturer.getManufacturerName();
     }
 
@@ -33,18 +33,14 @@ public class ManufacturerService {
     @Transactional
     public void editManufacturer(Long id, String newName) {
         Manufacturer manufacturer = manufacturerRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(EntityConstants.MANUFACTURER));
+                .orElseThrow(() -> new ResourceNotFoundException(EntityConstants.MANUFACTURER, id));
         manufacturer.setManufacturerName(newName);
     }
 
     public void deleteManufacturerById(Long id) {
         if (!manufacturerRepository.existsById(id)) {
-            throw new ResourceNotFoundException(EntityConstants.MANUFACTURER);
+            throw new ResourceNotFoundException(EntityConstants.MANUFACTURER, id);
         }
         manufacturerRepository.deleteById(id);
-    }
-
-    public boolean existsByName(String manufacturerName) {
-        return manufacturerRepository.existsByManufacturerName(manufacturerName);
     }
 }

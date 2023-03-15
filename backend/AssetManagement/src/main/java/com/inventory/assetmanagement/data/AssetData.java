@@ -25,19 +25,19 @@ public class AssetData {
     @NonNull
     private Boolean isAssetAllocated;
     @NonNull
-    private String assetType;
+    private Long assetTypeId;
     @NonNull
     private Date assignDate;
     @NonNull
-    private String manufacturer;
+    private Long manufacturerId;
     @NonNull
     private String serialNumber;
     @NonNull
     private String model;
     @NonNull
-    private String operatingSystem;
+    private Long operatingSystemId;
     @NonNull
-    private String location;
+    private Long locationId;
     @NonNull
     private String processor;
     @NonNull
