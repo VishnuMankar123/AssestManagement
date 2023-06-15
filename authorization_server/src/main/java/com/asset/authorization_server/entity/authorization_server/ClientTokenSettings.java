@@ -22,7 +22,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @AllArgsConstructor
 @Entity
 @Table(name = "token_settings")
-public class TokenSettings {
+public class ClientTokenSettings {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = IDENTITY)

@@ -76,5 +76,5 @@ public class Client {
     private List<RedirectURI> redirectURIs = new ArrayList<>();
 
     @OneToOne(mappedBy = "client")
-    private TokenSettings tokenSettings;
+    private ClientTokenSettings clientTokenSettings;
 }
