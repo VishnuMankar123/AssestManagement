@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -73,4 +74,7 @@ public class Client {
             inverseJoinColumns = {@JoinColumn(name = "redirect_uri_id", referencedColumnName = "id")}
     )
     private List<RedirectURI> redirectURIs = new ArrayList<>();
+
+    @OneToOne(mappedBy = "client")
+    private TokenSettings tokenSettings;
 }
