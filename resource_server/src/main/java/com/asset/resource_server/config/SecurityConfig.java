@@ -2,6 +2,7 @@ package com.asset.resource_server.config;
 
 import com.asset.resource_server.converter.CustomJwtAuthenticationTokenConverter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -11,6 +12,9 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @RequiredArgsConstructor
 public class SecurityConfig {
+
+    @Value(value = "${resource.server.key-set-uri}")
+    private String jwkSetUri;
 
     private final CustomJwtAuthenticationTokenConverter customJwtAuthenticationTokenConverter;
 
@@ -22,7 +26,7 @@ public class SecurityConfig {
         // Resource sever configuration
         http.oauth2ResourceServer(
                 resourceServer -> resourceServer.jwt(
-                        jwtConfigurer -> jwtConfigurer.jwkSetUri("http://localhost:8080/oauth2/jwks")
+                        jwtConfigurer -> jwtConfigurer.jwkSetUri(jwkSetUri)
                                 .jwtAuthenticationConverter(customJwtAuthenticationTokenConverter)
                 )
         );
