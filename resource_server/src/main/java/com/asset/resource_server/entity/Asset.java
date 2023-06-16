@@ -35,7 +35,7 @@ public class Asset {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "name", unique = true)
     private String name;
