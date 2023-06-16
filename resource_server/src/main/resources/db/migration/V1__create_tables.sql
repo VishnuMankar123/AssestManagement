@@ -81,24 +81,26 @@ CREATE TABLE processor
 
 CREATE TABLE asset
 (
-    id                   BIGINT AUTO_INCREMENT
+    id                              BIGINT AUTO_INCREMENT
         PRIMARY KEY,
-    name                 VARCHAR(200) NOT NULL,
-    employee_id          VARCHAR(100) NOT NULL,
-    department_id        INT          NOT NULL,
-    asset_allocated      INT          NOT NULL,
-    type_id              INT          NOT NULL,
-    assign_date          DATE         NULL,
-    manufacturer_id      INT          NOT NULL,
-    serial_number        VARCHAR(100) NOT NULL,
-    model_id             INT          NOT NULL,
-    operating_system_id  INT          NOT NULL,
-    location_id          INT          NOT NULL,
-    processor_id         INT          NOT NULL,
-    drive_type_id        INT          NOT NULL,
-    memory_type_id       INT          NOT NULL,
-    warranty_start_date  DATE         NULL,
-    warranty_expiry_date DATE         NULL,
+    name                            VARCHAR(200) NOT NULL,
+    employee_id                     VARCHAR(100) NOT NULL,
+    department_id                   INT          NOT NULL,
+    asset_allocated                 INT          NOT NULL,
+    type_id                         INT          NOT NULL,
+    assign_date                     DATE         NULL,
+    manufacturer_id                 INT          NOT NULL,
+    serial_number                   VARCHAR(100) NOT NULL,
+    model_id                        INT          NOT NULL,
+    operating_system_id             INT          NOT NULL,
+    location_id                     INT          NOT NULL,
+    processor_id                    INT          NOT NULL,
+    drive_type_id                   INT          NOT NULL,
+    memory_type_id                  INT          NOT NULL,
+    warranty_start_date             DATE         NULL,
+    warranty_expiry_date            DATE         NULL,
+    status                          INT          NOT NULL,
+    previous_user_asset_return_date DATE         NULL,
     CONSTRAINT unique_name
         UNIQUE (name),
     CONSTRAINT unique_serial_number
