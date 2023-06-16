@@ -19,13 +19,13 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "drive_type")
-public class DriveType {
+@Table(name = "memory_type")
+public class MemoryType {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = IDENTITY)
     private Integer id;
 
-    @Column(name = "secondary_memory", unique = true)
-    private String secondaryMemory;
+    @Column(name = "primary_memory", unique = true)
+    private String primaryMemory;
 }
