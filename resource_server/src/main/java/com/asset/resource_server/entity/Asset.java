@@ -3,7 +3,6 @@ package com.asset.resource_server.entity;
 import com.asset.resource_server.embeddable.Components;
 import com.asset.resource_server.enumeration.AssetAllocated;
 import com.asset.resource_server.enumeration.Status;
-import jakarta.persistence.AssociationOverride;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
