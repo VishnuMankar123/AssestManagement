@@ -4,6 +4,7 @@ import com.asset.resource_server.entity.AssetType;
 import com.asset.resource_server.service.AssetTypeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,11 +23,13 @@ public class AssetTypeController {
     private final AssetTypeService assetTypeService;
 
     @PostMapping
+    @PreAuthorize(value = "hasAuthority('admin')")
     public void save(String assetType) {
         this.assetTypeService.save(assetType);
     }
 
     @PutMapping(path = "{id}")
+    @PreAuthorize(value = "hasAuthority('admin')")
     public void modify(@PathVariable(name = "id") Integer id, String modifiedAssetType) {
         this.assetTypeService.modify(id, modifiedAssetType);
     }
@@ -37,6 +40,7 @@ public class AssetTypeController {
     }
 
     @DeleteMapping(path = "{id}")
+    @PreAuthorize(value = "hasAuthority('admin')")
     public void remove(@PathVariable(name = "id") Integer id) {
         this.assetTypeService.deleteById(id);
     }

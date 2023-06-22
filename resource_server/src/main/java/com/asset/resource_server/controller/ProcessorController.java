@@ -4,6 +4,7 @@ import com.asset.resource_server.entity.Processor;
 import com.asset.resource_server.service.ProcessorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,11 +23,13 @@ public class ProcessorController {
     private final ProcessorService processorService;
 
     @PostMapping
+    @PreAuthorize(value = "hasAuthority('admin')")
     public void save(String processor) {
         this.processorService.save(processor);
     }
 
     @PutMapping(path = "{id}")
+    @PreAuthorize(value = "hasAuthority('admin')")
     public void modify(@PathVariable(name = "id") Integer id, String newProcessor) {
         this.processorService.modify(id, newProcessor);
     }
@@ -37,6 +40,7 @@ public class ProcessorController {
     }
 
     @DeleteMapping
+    @PreAuthorize(value = "hasAuthority('admin')")
     public void remove(Integer id) {
         this.processorService.deleteById(id);
     }

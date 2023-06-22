@@ -4,6 +4,7 @@ import com.asset.resource_server.entity.Manufacturer;
 import com.asset.resource_server.service.ManufacturerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,11 +23,13 @@ public class ManufacturerController {
     private final ManufacturerService manufacturerService;
 
     @PostMapping
+    @PreAuthorize(value = "hasAuthority('admin')")
     public void save(String manufacturer) {
         this.manufacturerService.save(manufacturer);
     }
 
     @PutMapping(path = "{id}")
+    @PreAuthorize(value = "hasAuthority('admin')")
     public void modify(@PathVariable(name = "id") Integer id, String newManufacturer) {
         this.manufacturerService.modify(id, newManufacturer);
     }
@@ -37,6 +40,7 @@ public class ManufacturerController {
     }
 
     @DeleteMapping
+    @PreAuthorize(value = "hasAuthority('admin')")
     public void remove(Integer id) {
         this.manufacturerService.deleteById(id);
     }

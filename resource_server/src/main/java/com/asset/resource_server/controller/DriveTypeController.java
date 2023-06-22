@@ -4,6 +4,7 @@ import com.asset.resource_server.entity.DriveType;
 import com.asset.resource_server.service.DriveTypeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,11 +23,13 @@ public class DriveTypeController {
     private final DriveTypeService driveTypeService;
 
     @PostMapping
+    @PreAuthorize(value = "hasAuthority('admin')")
     public void save(String driveType) {
         this.driveTypeService.save(driveType);
     }
 
     @PutMapping(path = "{id}")
+    @PreAuthorize(value = "hasAuthority('admin')")
     public void modify(@PathVariable(name = "id") Integer id, String newDriveType) {
         this.driveTypeService.modify(id, newDriveType);
     }
@@ -37,6 +40,7 @@ public class DriveTypeController {
     }
 
     @DeleteMapping
+    @PreAuthorize(value = "hasAuthority('admin')")
     public void remove(Integer id) {
         this.driveTypeService.deleteById(id);
     }
