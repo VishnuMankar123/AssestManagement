@@ -59,7 +59,7 @@ public class AssetService {
     }
 
     @Transactional(isolation = SERIALIZABLE)
-    public void modify(Long assetId, AssetData assetData) throws IllegalAccessException {
+    public void modify(Long assetId, AssetData assetData) {
         if (this.assetRepository.existsById(assetId)) {
             this.assetRepository.deleteById(assetId);
         }
