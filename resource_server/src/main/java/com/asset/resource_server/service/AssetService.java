@@ -64,6 +64,8 @@ public class AssetService {
             this.assetRepository.deleteById(assetId);
         }
 
+        this.assetRepository.flush();
+
         this.assetRepository.save(Asset.builder()
                 .id(assetId)
                 .name(assetData.name())
