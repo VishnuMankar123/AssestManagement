@@ -1,0 +1,43 @@
+package com.asset.resource_server.controller;
+
+import com.asset.resource_server.entity.Manufacturer;
+import com.asset.resource_server.service.ManufacturerService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+@RequestMapping(path = "api/v1/manufacturer")
+@RequiredArgsConstructor
+public class ManufacturerController {
+
+    private final ManufacturerService manufacturerService;
+
+    @PostMapping
+    public void save(String manufacturer) {
+        this.manufacturerService.save(manufacturer);
+    }
+
+    @PutMapping(path = "{id}")
+    public void modify(@PathVariable(name = "id") Integer id, String newManufacturer) {
+        this.manufacturerService.modify(id, newManufacturer);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Manufacturer>> getAll() {
+        return ResponseEntity.ok(this.manufacturerService.fetchAll());
+    }
+
+    @DeleteMapping
+    public void remove(Integer id) {
+        this.manufacturerService.deleteById(id);
+    }
+}
