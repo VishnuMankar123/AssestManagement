@@ -1,5 +1,6 @@
 package com.asset.resource_server.controller;
 
+import com.asset.resource_server.entity.AssetType;
 import com.asset.resource_server.service.AssetTypeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +32,7 @@ public class AssetTypeController {
     }
 
     @GetMapping
-    public ResponseEntity<List<String>> getAll() {
+    public ResponseEntity<List<AssetType>> getAll() {
         return ResponseEntity.ok(this.assetTypeService.fetchAll());
     }
 
