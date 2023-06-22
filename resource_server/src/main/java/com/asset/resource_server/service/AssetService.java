@@ -1,5 +1,6 @@
 package com.asset.resource_server.service;
 
+import com.asset.resource_server.constant.CommonConstants;
 import com.asset.resource_server.data.AssetData;
 import com.asset.resource_server.embeddable.Components;
 import com.asset.resource_server.entity.Asset;
@@ -59,6 +60,10 @@ public class AssetService {
 
     @Transactional(isolation = SERIALIZABLE)
     public void modify(Long assetId, AssetData assetData) throws IllegalAccessException {
+        if (this.assetRepository.existsById(assetId)) {
+            this.assetRepository.deleteById(assetId);
+        }
+
         this.assetRepository.save(Asset.builder()
                 .id(assetId)
                 .name(assetData.name())
@@ -94,19 +99,19 @@ public class AssetService {
     public AssetData findById(Long id) {
         return this.assetRepository.findById(id)
                 .map(assetToAssetData)
-                .orElseThrow(() -> new ResourceNotFoundException("Asset", "id", id));
+                .orElseThrow(() -> new ResourceNotFoundException(CommonConstants.ASSET, CommonConstants.ID, id));
     }
 
     public AssetData findByName(String name) {
         return this.assetRepository.findByName(name)
                 .map(assetToAssetData)
-                .orElseThrow(() -> new ResourceNotFoundException("Asset", "name", name));
+                .orElseThrow(() -> new ResourceNotFoundException(CommonConstants.ASSET, "name", name));
     }
 
     public AssetData findBySerialNumber(String serialNumber) {
         return this.assetRepository.findBySerialNumber(serialNumber)
                 .map(assetToAssetData)
-                .orElseThrow(() -> new ResourceNotFoundException("Asset", "serialNumber", serialNumber));
+                .orElseThrow(() -> new ResourceNotFoundException(CommonConstants.ASSET, "serialNumber", serialNumber));
     }
 
     public void deleteById(Long id) {
