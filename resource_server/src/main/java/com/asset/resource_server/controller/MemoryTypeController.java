@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,13 +25,13 @@ public class MemoryTypeController {
 
     @PostMapping
     @PreAuthorize(value = "hasAuthority('admin')")
-    public void save(String memoryType) {
+    public void save(@RequestBody String memoryType) {
         this.memoryTypeService.save(memoryType);
     }
 
     @PutMapping(path = "{id}")
     @PreAuthorize(value = "hasAuthority('admin')")
-    public void modify(@PathVariable(name = "id") Integer id, String newMemoryType) {
+    public void modify(@PathVariable(name = "id") Integer id, @RequestBody String newMemoryType) {
         this.memoryTypeService.modify(id, newMemoryType);
     }
 

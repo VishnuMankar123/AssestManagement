@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,12 +25,12 @@ public class ModelController {
 
     @PostMapping
     @PreAuthorize(value = "hasAuthority('admin')")
-    public void save(String model) {
+    public void save(@RequestBody String model) {
         this.modelService.save(model);
     }
 
     @PutMapping(path = "{id}")
-    public void modify(@PathVariable(name = "id") Integer id, String newModel) {
+    public void modify(@PathVariable(name = "id") Integer id, @RequestBody String newModel) {
         this.modelService.modify(id, newModel);
     }
 

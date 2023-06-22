@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,13 +25,13 @@ public class LocationController {
 
     @PostMapping
     @PreAuthorize(value = "hasAuthority('admin')")
-    public void save(String city) {
+    public void save(@RequestBody String city) {
         this.locationService.save(city);
     }
 
     @PutMapping(path = "{id}")
     @PreAuthorize(value = "hasAuthority('admin')")
-    public void modify(@PathVariable(name = "id") Integer id, String newCity) {
+    public void modify(@PathVariable(name = "id") Integer id, @RequestBody String newCity) {
         this.locationService.modify(id, newCity);
     }
 

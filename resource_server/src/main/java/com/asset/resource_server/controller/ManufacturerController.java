@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,13 +25,13 @@ public class ManufacturerController {
 
     @PostMapping
     @PreAuthorize(value = "hasAuthority('admin')")
-    public void save(String manufacturer) {
+    public void save(@RequestBody String manufacturer) {
         this.manufacturerService.save(manufacturer);
     }
 
     @PutMapping(path = "{id}")
     @PreAuthorize(value = "hasAuthority('admin')")
-    public void modify(@PathVariable(name = "id") Integer id, String newManufacturer) {
+    public void modify(@PathVariable(name = "id") Integer id, @RequestBody String newManufacturer) {
         this.manufacturerService.modify(id, newManufacturer);
     }
 

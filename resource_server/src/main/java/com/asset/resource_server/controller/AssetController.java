@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,12 +23,12 @@ public class AssetController {
     private final AssetService assetService;
 
     @PostMapping
-    public void save(AssetData assetData) {
+    public void save(@RequestBody AssetData assetData) {
         this.assetService.save(assetData);
     }
 
     @PutMapping(path = "{id}")
-    public void modify(@PathVariable(name = "id") Long id, AssetData newAssetData) {
+    public void modify(@PathVariable(name = "id") Long id, @RequestBody AssetData newAssetData) {
         this.assetService.modify(id, newAssetData);
     }
 
