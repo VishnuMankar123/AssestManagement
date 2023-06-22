@@ -2,13 +2,11 @@ package com.asset.resource_server.data;
 
 import com.asset.resource_server.enumeration.AssetAllocated;
 import com.asset.resource_server.enumeration.Status;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 
 import java.time.LocalDate;
 
 @Builder
-@AllArgsConstructor
 public record AssetData (
     String name,
     String employeeId,
