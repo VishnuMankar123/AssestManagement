@@ -97,6 +97,18 @@ public class AssetService {
                 .orElseThrow(() -> new ResourceNotFoundException("Asset", "id", id));
     }
 
+    public AssetData findByName(String name) {
+        return this.assetRepository.findByName(name)
+                .map(assetToAssetData)
+                .orElseThrow(() -> new ResourceNotFoundException("Asset", "name", name));
+    }
+
+    public AssetData findBySerialNumber(String serialNumber) {
+        return this.assetRepository.findBySerialNumber(serialNumber)
+                .map(assetToAssetData)
+                .orElseThrow(() -> new ResourceNotFoundException("Asset", "serialNumber", serialNumber));
+    }
+
     public void deleteById(Long id) {
         this.assetRepository.deleteById(id);
     }
