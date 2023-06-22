@@ -35,10 +35,9 @@ public class ModelService {
         this.modelRepository.save(previous);
     }
 
-    public List<String> fetchAll() {
+    public List<Model> fetchAll() {
         return this.modelRepository.findAll()
                 .stream()
-                .map(Model::getModelName)
                 .toList();
     }
 

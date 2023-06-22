@@ -35,10 +35,9 @@ public class OperatingSystemService {
         this.operatingSystemRepository.save(previous);
     }
 
-    public List<String> fetchAll() {
+    public List<OperatingSystem> fetchAll() {
         return this.operatingSystemRepository.findAll()
                 .stream()
-                .map(OperatingSystem::getOperatingSystemName)
                 .toList();
     }
 

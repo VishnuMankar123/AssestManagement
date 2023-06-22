@@ -35,10 +35,9 @@ public class LocationService {
         this.locationRepository.save(previous);
     }
 
-    public List<String> fetchAll() {
+    public List<Location> fetchAll() {
         return this.locationRepository.findAll()
                 .stream()
-                .map(Location::getCity)
                 .toList();
     }
 

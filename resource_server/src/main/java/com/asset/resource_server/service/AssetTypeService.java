@@ -34,10 +34,9 @@ public class AssetTypeService {
         this.assetTypeRepository.save(previous);
     }
 
-    public List<String> fetchAll() {
+    public List<AssetType> fetchAll() {
         return this.assetTypeRepository.findAll()
                 .stream()
-                .map(AssetType::getType)
                 .toList();
     }
 

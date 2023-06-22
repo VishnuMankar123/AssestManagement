@@ -35,10 +35,9 @@ public class DriveTypeService {
         this.driveTypeRepository.save(previous);
     }
 
-    public List<String> fetchAll() {
+    public List<DriveType> fetchAll() {
         return this.driveTypeRepository.findAll()
                 .stream()
-                .map(DriveType::getSecondaryMemory)
                 .toList();
     }
 

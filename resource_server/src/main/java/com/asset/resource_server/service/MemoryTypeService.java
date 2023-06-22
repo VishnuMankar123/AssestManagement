@@ -35,10 +35,9 @@ public class MemoryTypeService {
         this.memoryTypeRepository.save(previous);
     }
 
-    public List<String> fetchAll() {
+    public List<MemoryType> fetchAll() {
         return this.memoryTypeRepository.findAll()
                 .stream()
-                .map(MemoryType::getPrimaryMemory)
                 .toList();
     }
 

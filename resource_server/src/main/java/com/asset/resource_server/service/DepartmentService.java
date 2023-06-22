@@ -36,10 +36,9 @@ public class DepartmentService {
         this.departmentRepository.save(previous);
     }
 
-    public List<String> fetchAll() {
+    public List<Department> fetchAll() {
         return this.departmentRepository.findAll()
                 .stream()
-                .map(Department::getDepartmentName)
                 .toList();
     }
 

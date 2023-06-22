@@ -35,10 +35,9 @@ public class ProcessorService {
         this.processorRepository.save(previous);
     }
 
-    public List<String> fetchAll() {
+    public List<Processor> fetchAll() {
         return this.processorRepository.findAll()
                 .stream()
-                .map(Processor::getProcessorName)
                 .toList();
     }
 

@@ -35,10 +35,9 @@ public class ManufacturerService {
         this.manufacturerRepository.save(previous);
     }
 
-    public List<String> fetchAll() {
+    public List<Manufacturer> fetchAll() {
         return this.manufacturerRepository.findAll()
                 .stream()
-                .map(Manufacturer::getManufacturerName)
                 .toList();
     }
 
