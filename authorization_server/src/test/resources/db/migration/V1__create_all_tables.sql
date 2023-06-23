@@ -1,14 +1,25 @@
+CREATE TABLE token_settings
+(
+    id                    INT AUTO_INCREMENT
+        PRIMARY KEY,
+    time_to_live_in_hours INT         NOT NULL,
+    format                VARCHAR(50) NOT NULL
+);
+
 CREATE TABLE clients
 (
-    id            INT AUTO_INCREMENT
+    id                INT AUTO_INCREMENT
         PRIMARY KEY,
-    client_name   VARCHAR(100) NOT NULL,
-    client_id     VARCHAR(100) NOT NULL,
-    client_secret VARCHAR(255) NOT NULL,
+    client_name       VARCHAR(100) NOT NULL,
+    client_id         VARCHAR(100) NOT NULL,
+    client_secret     VARCHAR(255) NOT NULL,
+    token_settings_id INT          NOT NULL,
     CONSTRAINT unique_client_id
         UNIQUE (client_id),
     CONSTRAINT unique_clients_name
-        UNIQUE (client_name)
+        UNIQUE (client_name),
+    CONSTRAINT clients_token_settings_id_fk
+        FOREIGN KEY (token_settings_id) REFERENCES token_settings (id)
 );
 
 CREATE TABLE authentication_methods
@@ -37,17 +48,6 @@ CREATE TABLE scopes
     id         INT AUTO_INCREMENT
         PRIMARY KEY,
     scope_name VARCHAR(100) NOT NULL
-);
-
-CREATE TABLE token_settings
-(
-    id                    INT AUTO_INCREMENT
-        PRIMARY KEY,
-    time_to_live_in_hours BIGINT         NOT NULL,
-    format                VARCHAR(50) NOT NULL,
-    client_id             INT         NOT NULL,
-    CONSTRAINT token_settings_clients_id_fk
-        FOREIGN KEY (client_id) REFERENCES clients (id)
 );
 
 CREATE TABLE client_authentication_method_mapping

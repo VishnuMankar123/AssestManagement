@@ -34,7 +34,6 @@ public class ClientTokenSettings {
     @Column(name = "time_to_live_in_hours")
     private Long timeToLiveInHours;
 
-    @OneToOne
-    @JoinColumn(name = "client_id", referencedColumnName = "id")
+    @OneToOne(mappedBy = "clientTokenSettings")
     private Client client;
 }

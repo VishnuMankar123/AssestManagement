@@ -18,6 +18,7 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
+import static jakarta.persistence.CascadeType.PERSIST;
 import static jakarta.persistence.FetchType.EAGER;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
@@ -75,6 +76,7 @@ public class Client {
     )
     private List<RedirectURI> redirectURIs = new ArrayList<>();
 
-    @OneToOne(mappedBy = "client")
+    @OneToOne
+    @JoinColumn(name = "token_settings_id", referencedColumnName = "id")
     private ClientTokenSettings clientTokenSettings;
 }
