@@ -37,7 +37,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.asset.authorization_server.utils.RandomValueGenerator.generateAlphaNumericString;
-import static com.asset.authorization_server.utils.RandomValueGenerator.generateRandomInteger;
 
 @ExtendWith(SpringExtension.class)
 @Import(value = {
