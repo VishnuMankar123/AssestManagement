@@ -36,7 +36,19 @@ class FlywayTest {
     private JdbcTemplate jdbcTemplate;
 
     private static final String TEST_SCHEMA_NAME = "test_schema";
-    private static final Set<String> tables = Set.of("clients", "authentication_methods", "grant_types", "redirect_uris", "scopes", "token_settings", "client_authentication_method_mapping", "client_grant_type_mapping", "client_redirect_uri_map", "client_scope_map", "users", "roles", "user_role_map");
+    private static final Set<String> tables = Set.of("clients",
+            "authentication_methods",
+            "grant_types",
+            "redirect_uris",
+            "scopes",
+            "token_settings",
+            "client_authentication_method_mapping",
+            "client_grant_type_mapping",
+            "client_redirect_uri_map",
+            "client_scope_map",
+            "users",
+            "roles",
+            "user_role_map");
 
     @Test
     void databaseHasBeenInitialized() {
