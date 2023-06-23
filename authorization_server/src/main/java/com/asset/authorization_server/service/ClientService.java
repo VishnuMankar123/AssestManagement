@@ -3,7 +3,7 @@ package com.asset.authorization_server.service;
 import com.asset.authorization_server.exception.ResourceNotFoundException;
 import com.asset.authorization_server.mapper.client.ClientToRegisteredClient;
 import com.asset.authorization_server.mapper.client.RegisteredClientToClient;
-import com.asset.authorization_server.repository.ClientRepository;
+import com.asset.authorization_server.repository.authorization_server.ClientRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;

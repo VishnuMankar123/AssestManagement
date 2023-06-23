@@ -1,4 +1,4 @@
-package com.asset.authorization_server.repository;
+package com.asset.authorization_server.repository.authorization_server;
 
 
 import com.asset.authorization_server.entity.authorization_server.Client;

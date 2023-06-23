@@ -1,10 +1,9 @@
-package com.asset.authorization_server.entity.authorization_server;
+package com.asset.resource_server.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,19 +19,13 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "token_settings")
-public class ClientTokenSettings {
+@Table(name = "manufacturer")
+public class Manufacturer {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = IDENTITY)
     private Integer id;
 
-    @Column(name = "format")
-    private String tokenFormat;
-
-    @Column(name = "time_to_live_in_hours")
-    private Long timeToLiveInHours;
-
-    @OneToOne(mappedBy = "clientTokenSettings")
-    private Client client;
+    @Column(name = "manufacturer_name", unique = true)
+    private String manufacturerName;
 }

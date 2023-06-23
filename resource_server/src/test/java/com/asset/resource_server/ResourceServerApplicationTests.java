@@ -1,10 +1,10 @@
-package com.asset.authorization_server;
+package com.asset.resource_server;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AuthorizationServerApplicationTests {
+class ResourceServerApplicationTests {
 
     @Test
     void contextLoads() {

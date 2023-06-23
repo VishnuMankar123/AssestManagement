@@ -1,4 +1,4 @@
-package com.asset.authorization_server.repository;
+package com.asset.authorization_server.repository.credentials;
 
 import com.asset.authorization_server.entity.credentials.User;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -75,6 +75,7 @@ public class Client {
     )
     private List<RedirectURI> redirectURIs = new ArrayList<>();
 
-    @OneToOne(mappedBy = "client")
+    @OneToOne
+    @JoinColumn(name = "token_settings_id", referencedColumnName = "id")
     private ClientTokenSettings clientTokenSettings;
 }
