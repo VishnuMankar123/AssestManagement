@@ -2,7 +2,7 @@ CREATE TABLE token_settings
 (
     id                    INT AUTO_INCREMENT
         PRIMARY KEY,
-    time_to_live_in_hours INT         NOT NULL,
+    time_to_live_in_hours BIGINT      NOT NULL,
     format                VARCHAR(50) NOT NULL
 );
 
