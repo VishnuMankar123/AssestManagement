@@ -1,6 +1,6 @@
 package com.asset.authorization_server.service;
 
-import com.asset.authorization_server.repository.UserRepository;
+import com.asset.authorization_server.repository.credentials.UserRepository;
 import com.asset.authorization_server.wrapper.UserWrapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
