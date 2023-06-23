@@ -88,10 +88,8 @@ class ClientRepositoryTest {
     @BeforeEach
     public void setup() {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(this.encoderStrength);
-        int currentRandomValue = generateRandomInteger(0, 100);
 
         Client singleClient = Client.builder()
-                .id(currentRandomValue)
                 .clientId(clientId)
                 .clientName(generateAlphaNumericString(10))
                 .clientSecret(passwordEncoder.encode(password))
@@ -123,12 +121,17 @@ class ClientRepositoryTest {
     void givenIncorrectClientIdFetClientByClientIdFails() {
         String incorrectClientId = generateAlphaNumericString(12);
         Optional<Client> retrievedClient = this.clientRepository.findByClientId(incorrectClientId);
-        Assertions.assertThat(retrievedClient).isEmpty();
+        Assertions.assertThat(retrievedClient).isNotPresent();
     }
 
     @AfterEach
     void destruction() {
         this.clientRepository.deleteAll();
+        this.authenticationMethodRepository.deleteAll();
+        this.grantTypeRepository.deleteAll();
+        this.scopeRepository.deleteAll();
+        this.redirectURIRepository.deleteAll();
+        this.clientTokenSettingsRepository.deleteAll();
     }
 
     private List<AuthenticationMethod> getAuthenticationMethods() {
