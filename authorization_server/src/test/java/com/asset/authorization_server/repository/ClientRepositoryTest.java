@@ -66,18 +66,6 @@ class ClientRepositoryTest {
     @Autowired
     private ClientTokenSettingsRepository clientTokenSettingsRepository;
 
-    @Autowired
-    private StringToRedirectURI stringToRedirectURI;
-
-    @Autowired
-    private StringToScope stringToScope;
-
-    @Autowired
-    private AuthorizationGrantTypeToGrantType authorizationGrantTypeToGrantType;
-
-    @Autowired
-    private ClientAuthenticationMethodToAuthenticationMethod clientAuthMethodToAuthMethod;
-
     @Value(value = "${bcrypt.encoder.strength}")
     private int encoderStrength;
 
