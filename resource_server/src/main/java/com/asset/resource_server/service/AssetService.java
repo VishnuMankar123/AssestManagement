@@ -104,12 +104,6 @@ public class AssetService {
                 .orElseThrow(() -> new ResourceNotFoundException(CommonConstants.ASSET, CommonConstants.ID, id));
     }
 
-    public AssetData findByName(String name) {
-        return this.assetRepository.findByName(name)
-                .map(assetToAssetData)
-                .orElseThrow(() -> new ResourceNotFoundException(CommonConstants.ASSET, "name", name));
-    }
-
     public AssetData findBySerialNumber(String serialNumber) {
         return this.assetRepository.findBySerialNumber(serialNumber)
                 .map(assetToAssetData)

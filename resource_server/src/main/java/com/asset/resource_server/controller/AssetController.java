@@ -37,11 +37,6 @@ public class AssetController {
         return ResponseEntity.ok(this.assetService.fetchAll());
     }
 
-    @GetMapping(path = "name/{asset-name}")
-    public AssetData getByName(@PathVariable(name = "asset-name") String name) {
-        return this.assetService.findByName(name);
-    }
-
     @GetMapping(path = "serial-number/{asset-serial-number}")
     public AssetData getBySerialNumber(@PathVariable(name = "asset-serial-number") String serialNumber) {
         return this.assetService.findBySerialNumber(serialNumber);

@@ -101,8 +101,6 @@ CREATE TABLE asset
     warranty_expiry_date            DATE NULL,
     status                          TINYINT      NOT NULL,
     previous_user_asset_return_date DATE NULL,
-    CONSTRAINT unique_name
-        UNIQUE (name),
     CONSTRAINT unique_serial_number
         UNIQUE (serial_number),
     CONSTRAINT asset_asset_type_id_fk
