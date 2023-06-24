@@ -1,0 +1,10 @@
+INSERT INTO ${test-schema}.asset_type VALUE (1, 'Laptop');
+INSERT INTO ${test-schema}.department VALUE (1, 'HR');
+INSERT INTO ${test-schema}.drive_type VALUE (1, '128GB SSD');
+INSERT INTO ${test-schema}.location VALUE (1, 'Pune');
+INSERT INTO ${test-schema}.manufacturer VALUE (1, 'Lenovo');
+INSERT INTO ${test-schema}.memory_type VALUE (1, '16 GB');
+INSERT INTO ${test-schema}.model VALUE (1, 'Latitude 3420');
+INSERT INTO ${test-schema}.operating_system VALUE (1, 'Ubuntu 10.04 LTS');
+INSERT INTO ${test-schema}.processor VALUE (1, 'intel core i5');
+INSERT INTO ${test-schema}.asset VALUE (1, 'emp1', '0000', 1, 0, 1, '2023-01-24', 1, 'serial', 1, 1, 1, 1, 1, 1, '2022-06-01', '2023-10-12', 0, NULL);
