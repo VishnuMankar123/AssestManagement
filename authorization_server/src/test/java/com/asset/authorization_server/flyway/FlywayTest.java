@@ -35,7 +35,7 @@ class FlywayTest {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private static final String TEST_SCHEMA_NAME = "test_schema";
+    private static final String TEST_SCHEMA_NAME = "authorization_server_test_schema";
     private static final Set<String> tables = Set.of("clients",
             "authentication_methods",
             "grant_types",
