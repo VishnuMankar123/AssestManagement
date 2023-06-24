@@ -1,4 +1,4 @@
-CREATE TABLE `${schema}`.asset_type
+CREATE TABLE `${test-schema}`.asset_type
 (
     id   INT AUTO_INCREMENT
         PRIMARY KEY,
@@ -7,7 +7,7 @@ CREATE TABLE `${schema}`.asset_type
         UNIQUE (type)
 );
 
-CREATE TABLE `${schema}`.department
+CREATE TABLE `${test-schema}`.department
 (
     id              INT AUTO_INCREMENT
         PRIMARY KEY,
@@ -16,7 +16,7 @@ CREATE TABLE `${schema}`.department
         UNIQUE (department_name)
 );
 
-CREATE TABLE `${schema}`.drive_type
+CREATE TABLE `${test-schema}`.drive_type
 (
     id               INT AUTO_INCREMENT
         PRIMARY KEY,
@@ -25,7 +25,7 @@ CREATE TABLE `${schema}`.drive_type
         UNIQUE (secondary_memory)
 );
 
-CREATE TABLE `${schema}`.location
+CREATE TABLE `${test-schema}`.location
 (
     id   INT AUTO_INCREMENT
         PRIMARY KEY,
@@ -34,7 +34,7 @@ CREATE TABLE `${schema}`.location
         UNIQUE (city)
 );
 
-CREATE TABLE `${schema}`.manufacturer
+CREATE TABLE `${test-schema}`.manufacturer
 (
     id                INT AUTO_INCREMENT
         PRIMARY KEY,
@@ -43,7 +43,7 @@ CREATE TABLE `${schema}`.manufacturer
         UNIQUE (manufacturer_name)
 );
 
-CREATE TABLE `${schema}`.memory_type
+CREATE TABLE `${test-schema}`.memory_type
 (
     id             INT AUTO_INCREMENT
         PRIMARY KEY,
@@ -52,7 +52,7 @@ CREATE TABLE `${schema}`.memory_type
         UNIQUE (primary_memory)
 );
 
-CREATE TABLE `${schema}`.model
+CREATE TABLE `${test-schema}`.model
 (
     id         INT AUTO_INCREMENT
         PRIMARY KEY,
@@ -61,7 +61,7 @@ CREATE TABLE `${schema}`.model
         UNIQUE (model_name)
 );
 
-CREATE TABLE `${schema}`.operating_system
+CREATE TABLE `${test-schema}`.operating_system
 (
     id                    INT AUTO_INCREMENT
         PRIMARY KEY,
@@ -70,7 +70,7 @@ CREATE TABLE `${schema}`.operating_system
         UNIQUE (operating_system_name)
 );
 
-CREATE TABLE `${schema}`.processor
+CREATE TABLE `${test-schema}`.processor
 (
     id             INT AUTO_INCREMENT
         PRIMARY KEY,
@@ -79,7 +79,7 @@ CREATE TABLE `${schema}`.processor
         UNIQUE (processor_name)
 );
 
-CREATE TABLE `${schema}`.asset
+CREATE TABLE `${test-schema}`.asset
 (
     id                              BIGINT AUTO_INCREMENT
         PRIMARY KEY,
