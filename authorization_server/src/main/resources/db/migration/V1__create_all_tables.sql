@@ -1,4 +1,4 @@
-CREATE TABLE token_settings
+CREATE TABLE ${schema}.token_settings
 (
     id                    INT AUTO_INCREMENT
         PRIMARY KEY,
@@ -6,7 +6,7 @@ CREATE TABLE token_settings
     format                VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE clients
+CREATE TABLE ${schema}.clients
 (
     id                INT AUTO_INCREMENT
         PRIMARY KEY,
@@ -22,35 +22,35 @@ CREATE TABLE clients
         FOREIGN KEY (token_settings_id) REFERENCES token_settings (id)
 );
 
-CREATE TABLE authentication_methods
+CREATE TABLE ${schema}.authentication_methods
 (
     id          INT AUTO_INCREMENT
         PRIMARY KEY,
     method_name VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE grant_types
+CREATE TABLE ${schema}.grant_types
 (
     id              INT AUTO_INCREMENT
         PRIMARY KEY,
     grant_type_name VARCHAR(150) NOT NULL
 );
 
-CREATE TABLE redirect_uris
+CREATE TABLE ${schema}.redirect_uris
 (
     id  INT AUTO_INCREMENT
         PRIMARY KEY,
     url VARCHAR(500) NOT NULL
 );
 
-CREATE TABLE scopes
+CREATE TABLE ${schema}.scopes
 (
     id         INT AUTO_INCREMENT
         PRIMARY KEY,
     scope_name VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE client_authentication_method_mapping
+CREATE TABLE ${schema}.client_authentication_method_mapping
 (
     id                       INT AUTO_INCREMENT
         PRIMARY KEY,
@@ -64,7 +64,7 @@ CREATE TABLE client_authentication_method_mapping
         FOREIGN KEY (client_id) REFERENCES clients (id)
 );
 
-CREATE TABLE client_grant_type_mapping
+CREATE TABLE ${schema}.client_grant_type_mapping
 (
     id            INT AUTO_INCREMENT
         PRIMARY KEY,
@@ -78,7 +78,7 @@ CREATE TABLE client_grant_type_mapping
         FOREIGN KEY (grant_type_id) REFERENCES grant_types (id)
 );
 
-CREATE TABLE client_redirect_uri_map
+CREATE TABLE ${schema}.client_redirect_uri_map
 (
     id              INT AUTO_INCREMENT
         PRIMARY KEY,
@@ -92,7 +92,7 @@ CREATE TABLE client_redirect_uri_map
         FOREIGN KEY (client_id) REFERENCES clients (id)
 );
 
-CREATE TABLE client_scope_map
+CREATE TABLE ${schema}.client_scope_map
 (
     id        INT AUTO_INCREMENT
         PRIMARY KEY,
@@ -106,7 +106,7 @@ CREATE TABLE client_scope_map
         FOREIGN KEY (client_id) REFERENCES clients (id)
 );
 
-CREATE TABLE users
+CREATE TABLE ${schema}.users
 (
     id       INT AUTO_INCREMENT
         PRIMARY KEY,
@@ -116,7 +116,7 @@ CREATE TABLE users
         UNIQUE (username)
 );
 
-CREATE TABLE roles
+CREATE TABLE ${schema}.roles
 (
     id        INT AUTO_INCREMENT
         PRIMARY KEY,
@@ -125,7 +125,7 @@ CREATE TABLE roles
         UNIQUE (role_name)
 );
 
-CREATE TABLE user_role_map
+CREATE TABLE ${schema}.user_role_map
 (
     id      INT AUTO_INCREMENT
         PRIMARY KEY,
