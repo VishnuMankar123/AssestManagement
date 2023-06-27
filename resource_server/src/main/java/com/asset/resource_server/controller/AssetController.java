@@ -4,6 +4,7 @@ import com.asset.resource_server.data.AssetData;
 import com.asset.resource_server.service.AssetService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,8 +43,9 @@ public class AssetController {
         return this.assetService.findBySerialNumber(serialNumber);
     }
 
-    @DeleteMapping
-    public void remove(Long id) {
+    @DeleteMapping(path = "{id}")
+    @PreAuthorize(value = "hasAuthority('admin')")
+    public void remove(@PathVariable(name = "id") Long id) {
         this.assetService.deleteById(id);
     }
 }
