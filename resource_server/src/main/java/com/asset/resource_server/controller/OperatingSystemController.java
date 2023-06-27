@@ -40,9 +40,9 @@ public class OperatingSystemController {
         return ResponseEntity.ok(this.operatingSystemService.fetchAll());
     }
 
-    @DeleteMapping
+    @DeleteMapping(path = "{id}")
     @PreAuthorize(value = "hasAuthority('admin')")
-    public void remove(Integer id) {
+    public void remove(@PathVariable(name = "id") Integer id) {
         this.operatingSystemService.deleteById(id);
     }
 }

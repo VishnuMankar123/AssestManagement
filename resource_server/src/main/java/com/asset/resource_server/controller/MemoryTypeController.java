@@ -40,9 +40,9 @@ public class MemoryTypeController {
         return ResponseEntity.ok(this.memoryTypeService.fetchAll());
     }
 
-    @DeleteMapping
+    @DeleteMapping(path = "{id}")
     @PreAuthorize(value = "hasAuthority('admin')")
-    public void remove(Integer id) {
+    public void remove(@PathVariable(name = "id") Integer id) {
         this.memoryTypeService.deleteById(id);
     }
 }

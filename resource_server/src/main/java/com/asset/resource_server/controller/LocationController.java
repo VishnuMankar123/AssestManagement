@@ -40,9 +40,9 @@ public class LocationController {
         return ResponseEntity.ok(this.locationService.fetchAll());
     }
 
-    @DeleteMapping
+    @DeleteMapping(path = "{id}")
     @PreAuthorize(value = "hasAuthority('admin')")
-    public void remove(Integer id) {
+    public void remove(@PathVariable(name = "id") Integer id) {
         this.locationService.deleteById(id);
     }
 }

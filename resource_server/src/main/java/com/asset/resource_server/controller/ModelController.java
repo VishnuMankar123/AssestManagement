@@ -40,9 +40,9 @@ public class ModelController {
         return ResponseEntity.ok(this.modelService.fetchAll());
     }
 
-    @DeleteMapping
+    @DeleteMapping(path = "{id}")
     @PreAuthorize(value = "hasAuthority('admin')")
-    public void remove(Integer id) {
+    public void remove(@PathVariable(name = "id") Integer id) {
         this.modelService.deleteById(id);
     }
 }

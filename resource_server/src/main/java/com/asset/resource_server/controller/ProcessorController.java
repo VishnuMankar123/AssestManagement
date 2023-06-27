@@ -40,9 +40,9 @@ public class ProcessorController {
         return ResponseEntity.ok(this.processorService.fetchAll());
     }
 
-    @DeleteMapping
+    @DeleteMapping(path = "{id}")
     @PreAuthorize(value = "hasAuthority('admin')")
-    public void remove(Integer id) {
+    public void remove(@PathVariable(name = "id") Integer id) {
         this.processorService.deleteById(id);
     }
 }

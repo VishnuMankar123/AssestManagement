@@ -40,9 +40,9 @@ public class DriveTypeController {
         return ResponseEntity.ok(this.driveTypeService.fetchAll());
     }
 
-    @DeleteMapping
+    @DeleteMapping(path = "{id}")
     @PreAuthorize(value = "hasAuthority('admin')")
-    public void remove(Integer id) {
+    public void remove(@PathVariable(name = "id") Integer id) {
         this.driveTypeService.deleteById(id);
     }
 }

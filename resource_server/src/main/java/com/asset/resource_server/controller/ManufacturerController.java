@@ -40,9 +40,9 @@ public class ManufacturerController {
         return ResponseEntity.ok(this.manufacturerService.fetchAll());
     }
 
-    @DeleteMapping
+    @DeleteMapping(path = "{id}")
     @PreAuthorize(value = "hasAuthority('admin')")
-    public void remove(Integer id) {
+    public void remove(@PathVariable(name = "id") Integer id) {
         this.manufacturerService.deleteById(id);
     }
 }
