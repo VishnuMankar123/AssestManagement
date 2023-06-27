@@ -3,6 +3,7 @@ package com.asset.resource_server.flyway;
 import com.asset.resource_server.exception.FlywayTestException;
 import jakarta.annotation.Nonnull;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,10 @@ class FlywayTest {
             "asset"
     );
 
+    @DisplayName(value = """
+            Unit test to check if
+            flyway created all the expected tables
+            """)
     @Test
     void databaseHasBeenInitialized() {
         GetTableNames getTableNames = new GetTableNames();
