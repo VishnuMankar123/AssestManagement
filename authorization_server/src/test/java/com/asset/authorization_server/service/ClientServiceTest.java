@@ -10,7 +10,7 @@ import com.asset.authorization_server.exception.ResourceNotFoundException;
 import com.asset.authorization_server.mapper.client.ClientToRegisteredClient;
 import com.asset.authorization_server.mapper.client.RegisteredClientToClient;
 import com.asset.authorization_server.repository.authorization_server.ClientRepository;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -52,13 +52,13 @@ class ClientServiceTest {
     @Mock
     private RegisteredClientToClient registeredClientToClient;
 
-    private final PasswordEncoder encoder = new BCryptPasswordEncoder(12);
+    private static final PasswordEncoder ENCODER = new BCryptPasswordEncoder(12);
 
-    private Client client;
-    private RegisteredClient registeredClient;
+    private static Client CLIENT;
+    private static RegisteredClient REGISTERED_CLIENT;
 
-    @BeforeEach
-    void initializeAllTestData() {
+    @BeforeAll
+    static void initializeAllTestData() {
         List<String> listOfAuthenticationMethods = List.of("client_secret_basic");
         List<String> listOfGrantTypes = List.of("authorization_code");
         List<String> listOfRedirectURIs = List.of("https://example.com/auth");
@@ -70,11 +70,11 @@ class ClientServiceTest {
         String tokenFormat = "self-contained";
         long timeToLiveInHours = 1L;
 
-        this.client = Client.builder()
+        CLIENT = Client.builder()
                 .id(1)
                 .clientId(clientId)
                 .clientName(clientName)
-                .clientSecret(encoder.encode(clientSecret))
+                .clientSecret(ENCODER.encode(clientSecret))
                 .authenticationMethods(listOfAuthenticationMethods.stream()
                         .map(method -> AuthenticationMethod.builder().methodName(method).build())
                         .toList())
@@ -93,11 +93,11 @@ class ClientServiceTest {
                         .build())
                 .build();
 
-        this.registeredClient = RegisteredClient
+        REGISTERED_CLIENT = RegisteredClient
                 .withId(Integer.toString(1))
                 .clientId(clientId)
                 .clientName(clientName)
-                .clientSecret(encoder.encode(clientSecret))
+                .clientSecret(ENCODER.encode(clientSecret))
                 .clientAuthenticationMethods(methods -> methods.addAll(listOfAuthenticationMethods.stream()
                         .map(ClientAuthenticationMethod::new)
                         .toList()))
@@ -120,14 +120,14 @@ class ClientServiceTest {
     @Test
     void testSaveClient() {
         // Preconditions: defining the expected behavior of the method calls inside the method to be tested.
-        given(this.clientRepository.save(any())).willReturn(this.client);
-        given(this.registeredClientToClient.apply(registeredClient)).willReturn(this.client);
+        given(this.clientRepository.save(any())).willReturn(CLIENT);
+        given(this.registeredClientToClient.apply(REGISTERED_CLIENT)).willReturn(CLIENT);
 
         // Execution: calling the function to be tested.
-        this.clientService.save(this.registeredClient);
+        this.clientService.save(REGISTERED_CLIENT);
 
         // Verification: verify the number of method calls to the save method.
-        verify(this.clientRepository, times(1)).save(this.client);
+        verify(this.clientRepository, times(1)).save(CLIENT);
         verifyNoMoreInteractions(this.clientRepository);
     }
 
@@ -138,15 +138,15 @@ class ClientServiceTest {
     @Test
     void givenCorrectIdFetchClientByIdWorks() {
         // Preconditions
-        given(this.clientRepository.findById(1)).willReturn(Optional.of(this.client));
-        given(this.clientToRegisteredClient.apply(this.client)).willReturn(this.registeredClient);
+        given(this.clientRepository.findById(1)).willReturn(Optional.of(CLIENT));
+        given(this.clientToRegisteredClient.apply(CLIENT)).willReturn(REGISTERED_CLIENT);
 
         // Execution
-        RegisteredClient returnedRegisteredClient = this.clientService.findById(Integer.toString(this.client.getId()));
+        RegisteredClient returnedRegisteredClient = this.clientService.findById(Integer.toString(CLIENT.getId()));
 
         //Verification
         verify(this.clientRepository, times(1)).findById(1);
-        assertThat(returnedRegisteredClient).isEqualTo(this.registeredClient);
+        assertThat(returnedRegisteredClient).isEqualTo(REGISTERED_CLIENT);
         verifyNoMoreInteractions(this.clientRepository);
     }
 
@@ -173,15 +173,15 @@ class ClientServiceTest {
     @Test
     void givenCorrectClientIdFetchClientByClientIdWorks() {
         // Preconditions
-        given(this.clientRepository.findByClientId(this.client.getClientId())).willReturn(Optional.of(this.client));
-        given(this.clientToRegisteredClient.apply(this.client)).willReturn(this.registeredClient);
+        given(this.clientRepository.findByClientId(CLIENT.getClientId())).willReturn(Optional.of(CLIENT));
+        given(this.clientToRegisteredClient.apply(CLIENT)).willReturn(REGISTERED_CLIENT);
 
         // Execution
-        RegisteredClient returnedRegisteredClient = this.clientService.findByClientId(this.client.getClientId());
+        RegisteredClient returnedRegisteredClient = this.clientService.findByClientId(CLIENT.getClientId());
 
         // Verification
-        verify(this.clientRepository, times(1)).findByClientId(this.client.getClientId());
-        assertThat(returnedRegisteredClient).isEqualTo(this.registeredClient);
+        verify(this.clientRepository, times(1)).findByClientId(CLIENT.getClientId());
+        assertThat(returnedRegisteredClient).isEqualTo(REGISTERED_CLIENT);
         verifyNoMoreInteractions(this.clientRepository);
     }
 
