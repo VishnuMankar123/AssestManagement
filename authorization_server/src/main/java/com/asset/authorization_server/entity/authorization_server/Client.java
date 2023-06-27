@@ -15,7 +15,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static jakarta.persistence.FetchType.EAGER;
@@ -49,7 +48,7 @@ public class Client {
             joinColumns = {@JoinColumn(name = "client_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "authentication_method_id", referencedColumnName = "id")}
     )
-    private List<AuthenticationMethod> authenticationMethods = new ArrayList<>();
+    private List<AuthenticationMethod> authenticationMethods;
 
     @ManyToMany(fetch = EAGER)
     @JoinTable(
@@ -57,7 +56,7 @@ public class Client {
             joinColumns = {@JoinColumn(name = "client_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "grant_type_id", referencedColumnName = "id")}
     )
-    private List<GrantType> grantTypes = new ArrayList<>();
+    private List<GrantType> grantTypes;
 
     @ManyToMany(fetch = EAGER)
     @JoinTable(
@@ -65,7 +64,7 @@ public class Client {
             joinColumns = {@JoinColumn(name = "client_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "scope_id", referencedColumnName = "id")}
     )
-    private List<Scope> scopes = new ArrayList<>();
+    private List<Scope> scopes;
 
     @ManyToMany(fetch = EAGER)
     @JoinTable(
@@ -73,7 +72,7 @@ public class Client {
             joinColumns = {@JoinColumn(name = "client_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "redirect_uri_id", referencedColumnName = "id")}
     )
-    private List<RedirectURI> redirectURIs = new ArrayList<>();
+    private List<RedirectURI> redirectURIs;
 
     @OneToOne
     @JoinColumn(name = "token_settings_id", referencedColumnName = "id")
