@@ -46,6 +46,7 @@ public class MemoryTypeService {
                 .orElseThrow(() -> new ResourceNotFoundException("MemoryType", "id", id));
     }
 
+    @Transactional
     public void deleteById(Integer id) {
         this.memoryTypeRepository.deleteById(id);
     }

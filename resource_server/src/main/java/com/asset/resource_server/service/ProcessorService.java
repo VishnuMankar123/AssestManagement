@@ -46,6 +46,7 @@ public class ProcessorService {
                 .orElseThrow(() -> new ResourceNotFoundException("Processor", "id", id));
     }
 
+    @Transactional
     public void deleteById(Integer id) {
         this.processorRepository.deleteById(id);
     }

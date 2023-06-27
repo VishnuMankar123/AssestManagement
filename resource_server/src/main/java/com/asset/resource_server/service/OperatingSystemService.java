@@ -46,6 +46,7 @@ public class OperatingSystemService {
                 .orElseThrow(() -> new ResourceNotFoundException("OperatingSystem", "id", id));
     }
 
+    @Transactional
     public void deleteById(Integer id) {
         this.operatingSystemRepository.deleteById(id);
     }

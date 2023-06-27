@@ -47,6 +47,7 @@ public class DepartmentService {
                 .orElseThrow(() -> new ResourceNotFoundException("Department", "id", id));
     }
 
+    @Transactional
     public void deleteById(Integer id) {
         this.departmentRepository.deleteById(id);
     }

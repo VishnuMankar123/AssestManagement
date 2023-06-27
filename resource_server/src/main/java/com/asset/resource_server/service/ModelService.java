@@ -46,6 +46,7 @@ public class ModelService {
                 .orElseThrow(() -> new ResourceNotFoundException("Model", "id", id));
     }
 
+    @Transactional
     public void deleteById(Integer id) {
         this.modelRepository.deleteById(id);
     }

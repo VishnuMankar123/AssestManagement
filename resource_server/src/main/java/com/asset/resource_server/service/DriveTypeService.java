@@ -46,6 +46,7 @@ public class DriveTypeService {
                 .orElseThrow(() -> new ResourceNotFoundException("DriveType", "id", id));
     }
 
+    @Transactional
     public void deleteById(Integer id) {
         this.driveTypeRepository.deleteById(id);
     }

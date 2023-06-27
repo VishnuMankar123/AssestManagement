@@ -45,6 +45,7 @@ public class AssetTypeService {
                 .orElseThrow(() -> new ResourceNotFoundException("AssetType", "type", id));
     }
 
+    @Transactional
     public void deleteById(Integer id) {
         this.assetTypeRepository.deleteById(id);
     }

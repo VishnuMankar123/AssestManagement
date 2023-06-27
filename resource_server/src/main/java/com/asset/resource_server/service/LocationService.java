@@ -46,6 +46,7 @@ public class LocationService {
                 .orElseThrow(() -> new ResourceNotFoundException("Location", "id", id));
     }
 
+    @Transactional
     public void deleteById(Integer id) {
         this.locationRepository.deleteById(id);
     }

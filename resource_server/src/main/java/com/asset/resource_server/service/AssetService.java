@@ -110,6 +110,7 @@ public class AssetService {
                 .orElseThrow(() -> new ResourceNotFoundException(CommonConstants.ASSET, "serialNumber", serialNumber));
     }
 
+    @Transactional
     public void deleteById(Long id) {
         this.assetRepository.deleteById(id);
     }

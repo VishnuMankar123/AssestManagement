@@ -46,6 +46,7 @@ public class ManufacturerService {
                 .orElseThrow(() -> new ResourceNotFoundException("Manufacturer", "id", id));
     }
 
+    @Transactional
     public void deleteById(Integer id) {
         this.manufacturerRepository.deleteById(id);
     }
