@@ -48,8 +48,7 @@ class FlywayTest {
             "user_role_map");
 
     @DisplayName(value = """
-            Unit test to check if
-            flyway created all the expected tables
+            Unit test to check if flyway created all the expected tables
             """)
     @Test
     void databaseHasBeenInitialized() {
