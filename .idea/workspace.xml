@@ -5,26 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97ef70bc-fcf5-45a1-b929-770bfd3b7fd5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/authorization_server/Inventory.authorization_server.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/resource_server/Inventory.resource_server.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authorization_server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/authorization_server/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_server/.gradle/7.3.3/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/resource_server/.gradle/7.3.3/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resource_server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/resource_server/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +79,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.Tests in 'Inventory.resource_server'">
+  <component name="RunManager" selected="Gradle.Tests in 'Inventory.authorization_server'">
     <configuration name="Inventory [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -225,8 +206,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.Tests in 'Inventory.resource_server'" />
         <item itemvalue="Gradle.Tests in 'Inventory.authorization_server'" />
+        <item itemvalue="Gradle.Tests in 'Inventory.resource_server'" />
         <item itemvalue="Gradle.Inventory [classes]" />
         <item itemvalue="Gradle.Inventory [buildNeeded]" />
         <item itemvalue="Gradle.Inventory [buildDependents]" />
@@ -243,7 +224,7 @@
       <updated>1687885328547</updated>
       <workItem from="1687885329544" duration="1837000" />
       <workItem from="1687887175329" duration="4726000" />
-      <workItem from="1687926812448" duration="425000" />
+      <workItem from="1687926812448" duration="1784000" />
     </task>
     <servers />
   </component>
